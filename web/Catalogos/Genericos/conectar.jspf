@@ -1,0 +1,18 @@
+<%@page import="java.sql.*, javax.sql.*, javax.naming.*, javax.servlet.*"%>
+<% 
+    DataSource ds=null;
+    Connection conn=null;
+    // Get DataSource
+    Context context =new InitialContext();
+    Context envCtx = (Context) context.lookup("java:comp/env");
+      ds =  (DataSource)envCtx.lookup("jdbc/saes");
+      if (ds != null) {
+       Connection conection=null;   
+       try{
+          conection=ds.getConnection();
+          session.setAttribute("conn", conection);
+       }catch(Exception ex) {
+          System.out.println(ex.getMessage());
+       }
+             }
+%>

@@ -1,0 +1,27 @@
+/* 
+    Document   : forma-dialogo
+    Created on : 23/01/2012, 08:34:31 PM
+    Author     : daniel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+.etiqueta  {
+    margin-bottom: 20px;
+}
+
+.div-izquierdo{
+    margin-right: 10px;
+    float: left;
+    display: inline;
+}
+

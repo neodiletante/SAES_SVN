@@ -1,0 +1,34 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<style media="all" type="text/css">@import "Estilos/menu_style.css";</style>
+<div class="menu">
+<ul>
+<li><a href="" target="_self" >Catalogos</a>
+<ul>
+<li><a href="?o=1" target="_self">Grupos</a></li>
+<li><a href="?o=2" target="_self">Listas</a></li>
+<li><a href="?o=3" target="_self">Alumnos</a></li>
+<li><a href="?o=4" target="_self">Interacciones</a></li>
+</ul>
+</li>
+<li><a href="" target="_self" >Entrevistas</a>
+<ul>
+<li><a href="?o=5" target="_self">Registro</a></li>
+<li><a href="?o=6" target="_self">Revisi&oacute;n</a></li>
+</ul>
+</li>
+<li><a href="" target="_self" >Reportes</a>
+<ul>
+<li><a href="?o=7" target="_self">Acumulativo</a></li>
+<li><a href="?o=8" target="_self">Promedios</a></li>
+<li><a href="?o=9" target="_self">Desv. Est&aacute;ndar</a></li>
+</ul>
+</li>
+<li><a href="" target="_self" >Cortes</a>
+<ul>
+<li><a href="?o=10" target="_self">Seleccionar</a></li>
+<li><a href="?o=11" target="_self">Agregar nuevo</a></li>
+</ul>
+</li>
+</ul>
+</div>

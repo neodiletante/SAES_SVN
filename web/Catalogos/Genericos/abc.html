@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+
+
+<html>
+    <head>
+        
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style media="all" type="text/css">@import "generico.css";</style>
+       
+        <script src="../../JavaScript/divactions.js"></script> 
+        <script src="../../JavaScript/ajax.js"></script>
+        <script type="text/javascript">
+            function  cargaCatalogo(url,parametros){
+               Carga(url+parametros,'capa');
+            }
+        </script>
+    </head>
+    <!--<body background="../../Imagenes/alumno.gif">-->
+    <body>
+        <img src="../../Imagenes/alumno.gif"> 
+        <div id="capa" draggable="true" onmousedown="dragStart(event)" onmouseover="cambiaCursor('capa')" onmouseup="resize('capa',100,100)" onclick="cargaCatalogo('dentrodiv.html','');">
+            <p><label class="etiqueta">Etiqueta</label> </p>
+        </div>
+      <!--  <div id="capa" draggable="true" onmousedown="dragStart(event)" onmouseover="cambiaCursor('capa')" onmouseup="resize('capa',100,100)" >
+            <p><label class="etiqueta">Etiqueta</label> </p>
+        </div>-->
+    </body>
+</html>

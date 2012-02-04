@@ -1,0 +1,22 @@
+<%   String fecha_ini=request.getParameter("fecha_ini");
+         String fecha_fin=request.getParameter("fecha_fin");
+         String descripcion=request.getParameter("descripcion");
+         corte=request.getParameter("corte");
+         StringBuffer query = new StringBuffer("insert into cortes values(");
+         query.append(corte).append(",");
+         query.append("STR_TO_DATE('").append(fecha_ini);
+         query.append("', '%m/%d/%Y')").append(",").append("STR_TO_DATE('");
+         query.append(fecha_fin+"', '%m/%d/%Y')").append(",'");
+         query.append(descripcion).append("')");
+         String respuesta=null;
+         try{
+             if(stm.executeUpdate(query.toString())>0)
+                 respuesta="Agregado nuevo corte";
+             else
+                 respuesta="no se agregó corte";
+         }catch(Exception ex){
+             respuesta="Error al agregar nuevo corte";
+         }
+         out.println(respuesta);
+        // out.println("{\"respuesta\":\"OK\",\"otro\":\"cuack\"}");
+%>         

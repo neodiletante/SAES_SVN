@@ -1,0 +1,6 @@
+<%@page import="java.sql.Connection"%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+  Connection conCerrar=(Connection)session.getAttribute("conn");
+  conCerrar.close();
+%>

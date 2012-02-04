@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/proyecto">
+        <Resource name="jdbc/saes" type="javax.sql.DataSource" maxWait="15000" maxActive="100" password="saes"
+          url="jdbc:mysql://192.168.1.77:3306/saes?autoReconnect=true"
+          driverClassName="com.mysql.jdbc.Driver" maxIdle="30" username="saes"
+          validationQuery="SELECT '1' FROM dual"/>     
+</Context>          

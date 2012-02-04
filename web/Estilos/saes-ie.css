@@ -1,0 +1,399 @@
+/* Sistema Integral de Administraci�n SIA  */
+/* Hoja de Estilo                          */ 
+/*                                         */
+
+html, body { height: 100%; }
+
+body {
+    background-color  :#000000;
+    font-family	      : verdana, arial;
+    font-size	      : 8pt;
+    font-weight       : normal;
+    text-decoration   : none;
+    color 	      : #D7D7D7;
+}
+
+ a	 {
+  font-family	 	: Arial, Helvetica, sans-serif;
+  color			 	: #000000;
+  text-decoration 	: underline;
+ }
+
+a:Link
+	 {
+ 	  color 			:  #000000; 
+	  font-size 		: 8pt;
+	  text-decoration 	: underline
+	 }
+
+a:Visited
+	 {
+	  color 			: #009ee2; 
+	  font-size 		: 8pt;
+	  text-decoration 	: underline
+	 }
+
+a:hover
+	 {
+	  color 			: red;
+	  font-size 		: 8pt;
+	  text-decoration 	: none
+	 }
+
+address 
+     {
+  	  font-family 		: Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  color 			:#000066 ;
+	  text-decoration 	: none
+	 }	
+
+         
+         
+
+th
+   {
+ 	  font-family     : Arial, Helvetica, sans-serif;
+  	color           : #000000; 
+	  font-size 	   	: 8pt;
+	  text-decoration : none;
+     } 	
+
+td
+     {
+ 	  font-family       : Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  text-decoration   : none;
+     } 	
+
+
+				 	  
+table 
+   	 {
+          margin                : 30px 10px;
+	  border-style	  	: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #3399cc;
+	  empty-cells 		: show;
+          width                 : 75%;
+     }	  
+
+th
+     {
+	  border-style		: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #3399cc;
+ 	  font-family     	: Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  color 		    : #ffffff;
+	  text-decoration   : none;
+	  font-weight 	    : normal;
+	  background-color  : #006699
+     } 	
+
+td.general
+     {
+	  border-style		: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #3399cc;
+ 	  font-family       : Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  color 			: #000000;
+	  text-decoration   : none;
+	  font-weight 	  	: normal
+     } 	
+
+td
+     {
+	  border-style		: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #006699;
+	  empty-cells 		: show
+     }	  
+
+th.resultado
+     {
+	  border-style		: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #006699;
+ 	  font-family       : Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  color 			: #ffffff;
+	  text-decoration   : none;
+	  font-weight 	    : normal;
+	  background-color  : #0099cc
+     } 
+	 
+tr:hover
+     {
+	  border-style		: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #006699;
+ 	  font-family       : Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  color 			: #000000;
+ 	  background-color  : #E8E8E8;
+	  text-decoration   : none;
+	  font-weight 	    : normal;
+     } 	
+tr.resGrisOscuro
+     {
+	  border-style		: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #006699;
+ 	  font-family       : Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  color 			: #000000;
+ 	  background-color  : #D7D7D7;
+	  text-decoration   : none;
+	  font-weight 	    : normal;
+     } 	
+tr.resAzulClaro
+     {
+	  border-style		: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #006699;
+ 	  font-family       : Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  color 			: #000000;
+ 	  background-color  : #CEE9F7;
+	  text-decoration   : none;
+	  font-weight 	    : normal;
+     } 	
+tr.resAzulOscuro
+     {
+	  border-style		: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #006699;
+ 	  font-family       : Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  color 			: #000000;
+ 	  background-color  : #bbdff3;
+	  text-decoration   : none;
+	  font-weight 	    : normal;
+     } 	
+	
+
+td.resultado
+     {
+	  border-style		: solid;
+	  border-width		: thin;
+	  border-collapse 	: collapse;
+	  border-color		: #006699;
+ 	  font-family       : Arial, Helvetica, sans-serif;
+	  font-size 	   	: 8pt;
+	  color 			: #000000;
+	  text-decoration   : none;
+	  font-weight 	    : normal;
+     } 	
+
+h1   {
+      color				: #D7D7D7;
+      font-size			: 20Pt;
+ 	  font-family      	: Times;
+     }
+
+h2   {
+      color				: #D7D7D7;
+      font-size			: 12Pt;
+ 	  font-family      	: Times;
+	  text-align 		: left;
+     }
+
+h3   {
+      color				: #D7D7D7;
+ 	  font-family      	: Times;
+      font-size			: 10Pt;
+     }
+
+
+.h4   {
+      color				: #D7D7D7;
+      font-size			: 20Pt;
+      font-family       : Arial, Helvetica, sans-serif;
+     }
+
+h5   {
+      color				: #D7D7D7;
+      font-size			: 12Pt;
+      font-family       : Arial, Helvetica, sans-serif;
+	  text-align 		: left;
+     }
+
+.h6   {
+      color				: #D7D7D7;
+      font-family       : Arial, Helvetica, sans-serif;
+      font-size			: 10Pt;
+     }
+
+
+li   {
+      color				: navy;
+     }
+
+p    {
+      font-size			: 8pt;
+     }
+
+
+.negrita
+     {
+      font-weight		: bold;
+     }
+
+.azul{
+      color				: #37689D;
+     }
+
+.opcion
+     {
+	  font-family	 	: Verdana;
+	  background-color 	: #eff5f9;
+	 }
+
+label 
+     {
+	  font-size 		: 7pt;
+	  font-weight		:bold;
+     }	  	  
+
+fieldset 
+     {
+	  font-weight		:bold;
+     }	  	  
+
+hr
+     {
+	border: medium solid #006699;
+	 }  
+
+hr.piePagina {
+	border-style	  	: solid;
+	border-color		: #0099CC;
+	width: 70%;
+}
+
+/*Fin de Archivo de Estilos             */
+.cajaTexto {
+font-size:9pt;
+MARGIN-top:0px;
+MARGIN-left:0px;
+background-color 	: #eff5f9;
+color				: navy;
+border: thin #000066 solid; 
+font-weight: normal;
+}
+
+
+.button {  
+font-family: Verdana, Arial, Helvetica, sans-serif; 
+font-size: 8pt; 
+font-style: oblique; 
+line-height: normal; 
+font-weight: bold; 
+color: #FFFFFF; 
+background-color: #0099CC; 
+border-color: #37CDFF #33CCFF #33CCFF; 
+border-style: outset; 
+border-top-width: thin; 
+border-right-width: thin; 
+border-bottom-width: thin; 
+border-left-width: thin;
+cursor: move;
+}
+links {
+
+	  font-family	 	: Arial, Helvetica, sans-serif;
+	  text-decoration 	: none;
+}
+
+.Arbol {
+	border-right-width: thin;
+	border-right-style: solid;
+	border-right-color: #000066;
+}
+
+.cajaTexto2 {
+font-size:9pt;
+MARGIN-top:0px;
+MARGIN-left:0px;
+background-color 	: #ffffff;
+color				: #666666;
+border: thin #666666 solid; 
+font-weight: normal;
+}
+
+.btnform {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 12px; BORDER-LEFT: 0px; WIDTH: 100%; cursor: move; BORDER-BOTTOM: 0px; FONT-FAMILY: tahoma, verdana; HEIGHT: 18px; BACKGROUND-COLOR: #dbeaf5; TEXT-ALIGN: center
+}
+.btn {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; BACKGROUND-COLOR: #dbeaf5
+}
+
+/* Barra de progreso basada en div */
+.barraFondo{    position: relative; background:#DDEEEE;  width:95%}
+.barraFondo, .barraValor, .barraTexto {  
+     height: 30px;}
+.barraFondo, .barraValor {    background-color:#698CB0; width:1%;}     
+.barraTexto {    position: absolute;    top:0; left:0;    padding-top: 5px;      color: #fff;    text-align: center;    width: 100%;}
+
+.forma {
+    border-color        : #3399cc;
+    font-family	        : Arial, Helvetica, sans-serif;
+    text-decoration 	: none;
+    color		: navy;
+    border              : thin #000066 solid; 
+    width               : 60%;
+    margin              : 50px;
+    display             :block;
+    background-color    :#FFFFFF; 
+}
+.forma, .tituloForma {
+    border-bottom-color : #3399cc;
+    font-family	        : Arial, Helvetica, sans-serif;
+    text-decoration 	: none;
+    font-family     	: Arial, Helvetica, sans-serif;
+    font-size 	   	: 8pt;
+    color 		: #ffffff;
+    text-decoration     : none;
+    font-weight 	: normal;
+    background-color    : #006699;
+    border-bottom       : thin solid; 
+    width               : 100%;
+    margin-bottom       : 20px;
+    clear               : both;
+    display             : inline;
+}
+
+.curved { -moz-border-radius:10px; 
+         -webkit-border-radius:10px;
+         -khtml-border-radius:10px;  
+}
+
+
+
+.carga-paginas{
+        
+    border-color        : #3399cc;
+    font-family	        : Arial, Helvetica, sans-serif;
+    text-decoration 	: none;
+    border              : thin #000066 solid; 
+    width               : 99%;
+    height              : 70%;
+    margin              : 5px;
+    display             :block;
+    background-color    :#FFFFFF; 
+}
+
+.centrado{
+    text-align: center;
+}
