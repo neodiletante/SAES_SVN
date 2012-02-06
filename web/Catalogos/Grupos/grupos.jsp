@@ -18,8 +18,8 @@
          
          $(function(){
          
-             
          
+                                                                                                                
          $( '#forma-agrega-grupo' ).dialog({
 			autoOpen: false,
 			height: 300,
@@ -27,17 +27,26 @@
 			modal: true,
 			buttons: {
 			    'Agregar grupo':function(){                         
-                               
-                                    var parameters={};
-                                   alert("en la func");
-                                    parameters.accion='agregar';
+                              //  $.post('agregarGrupo');
+                           
+                            var parameters={};
+                                    parameters.grado=$("#grado").val();
+                                    parameters.grupo=$("#grupo").val();
+                                    parameters.turno=$("#turno").val();
+                                    parameters.corte=$("#corte").val();
+                        //           alert("en la func");
+                         //           parameters.accion='agregar';
                                 
                                     $.post('agregarGrupo', parameters, function(data){
                                         //console.log('respuesta recibida');
                                         //obRespuesta = data;
-                                       alert(data); 
+                                    //   alert(data); 
+                                     $('#_principal').load('grupos');
                                     },'text'   );
-                               // },'json'
+                                   
+                                        
+                                  
+                               $( this ).dialog( 'close' );
                             
                             }//function
                         }//button,
@@ -49,14 +58,34 @@
                    
            });
            
-          
+            $('#btn-borra-grupo').click(function(){
+                var checks = $('.check_grupo:checked');
+                for(var i =0 ; i<checks.length ; i++){
+                //      alert (checks[i].value );
+                    var parameters={};
+                 parameters.idGrupo = checks[i].value;
+                    
+                     $.post('borrarGrupo', parameters, function(data){
+                                        //console.log('respuesta recibida');
+                                        //obRespuesta = data;
+                                    //   alert(data); 
+                                     $('#_principal').load('grupos');
+                                    },'text'   );
+                }
+                 
+                 //$.post('borrarGrupo');
+                 
+                   
+                    
+                   
+           });
  
            
          });
              
          </script>
 <center>
-   <table>
+   <table id="tabla-grupos-actuales">
         <thead>
             <th colspan="6">Grupos actuales</th>
         </thead>
@@ -74,10 +103,16 @@
             <jsp:useBean id="grupos" class="java.util.ArrayList" scope="request" />
             <c:forEach var="grupo" items="${grupos}">
                <tr>
-                <th>${grupo.grado}</th>
-                <th>${grupo.grupo}</th>
-                <th>${grupo.turno}</th>
-                <th>${grupo.corte}</th>
+                <td class="resultado">${grupo.grado}</td>
+                <td class="resultado">${grupo.grupo}</td>
+                <td class="resultado">${grupo.turno}</td>
+                <td class="resultado">${grupo.corte}</td>
+                <td class="centrado">
+                    <input class="check_grupo" type="checkbox" name="corte" id="borrar" value="${grupo.idGrupo}"/>
+                </td>
+                <td class="centrado">
+                    <input type="radio" name="modificar" id="modificar" value="${grupo.idGrupo}s"/>
+                </td>
                </tr> 
             </c:forEach>
     
@@ -90,7 +125,7 @@
     <button class="ui-button" id="btn-cambia-grupo">Cambia grupo</button> 
     
       <div id="forma-agrega-grupo" >
-        <form  method="post" action="agregarGrupo">
+        <form>
             <fieldset >
                 <legend>Agregar el siguiente Grupo</legend>
                 <div class="div-izquierdo">
@@ -100,12 +135,21 @@
                   <p class="etiqueta"><label>Corte: </label>
                 </div>
                 <div>
-                 <p><input type="text" id="grado" size="10" />
+                 <!--p><input type="text" id="grado"  itemid="grado" size="10" /-->
+                 <select id ="grado" size="1">
+                     <option value="1"> 1 </option>
+                     <option value="2"> 2 </option>
+                     <option value="3"> 3 </option>
+                     <option value="4"> 4 </option>
+                     <option value="5"> 5 </option>
+                     <option value="6"> 6 </option>
+                 </select>
                  <p><input type="text" id="grupo" size="10" />
                  <p><input type="text" id="turno" size="10" />
                  <p><input type="text" id="corte" size="10" />
                 </div>
                
             </fieldset>
+            <!--input type="submit" value="Agregar" /-->
         </form>   
       </div>    

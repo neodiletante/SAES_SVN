@@ -36,6 +36,7 @@ public class GruposDAO {
            
             stmt = con.createStatement();
             String query = "SELECT id_grupo, grado, grupo, turno, corte FROM tc_grupos";
+            System.out.println(query);
             rs = stmt.executeQuery(query);
             
             while(rs.next()) {
@@ -65,7 +66,7 @@ public class GruposDAO {
               + grupo.getGrupo() + "','"
               + grupo.getTurno() + "',"
               + grupo.getCorte() + ")";
-            System.out.println("En el DAO");
+            System.out.println("En el DAO " + qInsert);
             
           try {
             stmt = con.createStatement();
@@ -74,6 +75,16 @@ public class GruposDAO {
               Logger.getLogger(GruposDAO.class.getName()).log(Level.SEVERE, null, ex);
               System.out.println("Falló insert");
           }
+        }
+        
+        public void borrarGrupo(String idGrupo){
+            try {
+              String qBorrado = "DELETE FROM tc_grupos WHERE id_grupo = " + idGrupo;
+              stmt = con.createStatement();
+              stmt.execute(qBorrado);
+           } catch (SQLException ex) {
+            Logger.getLogger(GruposDAO.class.getName()).log(Level.SEVERE, null, ex);
+         }
         }
     
 }

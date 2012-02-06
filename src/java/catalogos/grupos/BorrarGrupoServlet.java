@@ -1,33 +1,23 @@
-package catalogos.grupos;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package catalogos.grupos;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelo.Grupo;
 
 /**
  *
- * @author maria
+ * @author ulises
  */
-@WebServlet(name = "GruposServlet", urlPatterns = {"/grupos"})
-public class GruposServlet extends HttpServlet {
+public class BorrarGrupoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -41,21 +31,16 @@ public class GruposServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("En el servlet borrado");
+            String idGrupo = request.getParameter("idGrupo");
+            HttpSession session = request.getSession();
         
-        System.out.println("+++++++En el servlet grupos +++++++++");
-     
-      HttpSession session = request.getSession();
-      Connection conect = (Connection) session.getAttribute("conn");
-  
-       GruposDAO gDAO = new GruposDAO(conect);
-       List<Grupo> grupos = gDAO.consultaGrupos();
-   
-       request.setAttribute("grupos", grupos);
-       //request.setAttribute("grupo", grupo);
-       RequestDispatcher view = request.getRequestDispatcher("Catalogos/Grupos/grupos.jsp");
-       view.forward(request, response);
-       
-      
+        Connection conect = (Connection) session.getAttribute("conn");
+        GruposDAO gDAO = new GruposDAO(conect);
+        
+           
+               gDAO.borrarGrupo(idGrupo);
+           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

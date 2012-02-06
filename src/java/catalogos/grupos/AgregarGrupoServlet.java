@@ -33,35 +33,28 @@ public class AgregarGrupoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("||||||||||||| no jala-|||||||||||||");
+        
         String grado = request.getParameter("grado");
         String grupo = request.getParameter("grupo");
         String turno = request.getParameter("turno");
         String corte = request.getParameter("corte");
+        /*
         System.out.println("grado " + grado);
         System.out.println("grupo " + grupo);
         System.out.println("turno " + turno);
         System.out.println("corte " + corte);
-        //Grupo grupoInsert = new Grupo(grado,grupo,turno,corte);
-        Grupo grupoInsert = new Grupo();
-        System.out.println("hasta aquí si");
-        try{
-        grupoInsert.setGrado(grado);
-        grupoInsert.setGrupo(grupo);
-        grupoInsert.setTurno(turno);
-        grupoInsert.setCorte(corte);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    System.out.println("hasya aca");
+        
+        */
+        Grupo grupoInsert = new Grupo(grado,grupo,turno,corte);
+     
         HttpSession session = request.getSession();
         
         Connection conect = (Connection) session.getAttribute("conn");
         GruposDAO gDAO = new GruposDAO(conect);
         gDAO.insertarGrupo(grupoInsert);
-        System.out.println("-------------------ya no jalaba------------------");
-        RequestDispatcher view = request.getRequestDispatcher("grupos");
-        view.forward(request, response);
+       
+      //  RequestDispatcher view = request.getRequestDispatcher("grupos");
+       // view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

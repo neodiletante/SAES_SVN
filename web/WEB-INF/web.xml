@@ -25,6 +25,10 @@
         <servlet-name>AgregarGrupo</servlet-name>
         <servlet-class>catalogos.grupos.AgregarGrupoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BorrarGrupo</servlet-name>
+        <servlet-class>catalogos.grupos.BorrarGrupoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -36,6 +40,10 @@
     <servlet-mapping>
         <servlet-name>AgregarGrupo</servlet-name>
         <url-pattern>/agregarGrupo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarGrupo</servlet-name>
+        <url-pattern>/borrarGrupo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
