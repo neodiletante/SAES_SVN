@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelo.Grupo;
 
 /**
  *
@@ -49,8 +48,10 @@ public class GruposServlet extends HttpServlet {
   
        GruposDAO gDAO = new GruposDAO(conect);
        List<Grupo> grupos = gDAO.consultaGrupos();
+       List cortes = gDAO.consultaCortes();
    
        request.setAttribute("grupos", grupos);
+       request.setAttribute("cortes", cortes);
        //request.setAttribute("grupo", grupo);
        RequestDispatcher view = request.getRequestDispatcher("Catalogos/Grupos/grupos.jsp");
        view.forward(request, response);

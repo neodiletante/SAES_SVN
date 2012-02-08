@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.Grupo;
 
 /**
  *
@@ -20,8 +19,7 @@ import modelo.Grupo;
  */
 public class GruposDAO {
     private Connection con=null;
-    private Statement stmt=null; 
-    
+    private Statement stmt=null;
     private ResultSet rs=null;
     private Grupo grupo = null;
     
@@ -34,8 +32,8 @@ public class GruposDAO {
         List<Grupo> grupos = new ArrayList<Grupo>();
         try{
            
-            stmt = con.createStatement();
-            String query = "SELECT id_grupo, grado, grupo, turno, corte FROM tc_grupos";
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String query = "SELECT * FROM tc_grupos ORDER BY corte DESC";
             System.out.println(query);
             rs = stmt.executeQuery(query);
             
@@ -63,13 +61,13 @@ public class GruposDAO {
         public void insertarGrupo(Grupo grupo){
             String qInsert = "INSERT INTO tc_grupos VALUES(0," 
               + grupo.getGrado() + ",'"
-              + grupo.getGrupo() + "','"
+              + grupo.getGrupo().toUpperCase() + "','"
               + grupo.getTurno() + "',"
               + grupo.getCorte() + ")";
             System.out.println("En el DAO " + qInsert);
             
           try {
-            stmt = con.createStatement();
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             stmt.execute(qInsert);
           } catch (SQLException ex) {
               Logger.getLogger(GruposDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,11 +78,45 @@ public class GruposDAO {
         public void borrarGrupo(String idGrupo){
             try {
               String qBorrado = "DELETE FROM tc_grupos WHERE id_grupo = " + idGrupo;
-              stmt = con.createStatement();
+              stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
               stmt.execute(qBorrado);
            } catch (SQLException ex) {
             Logger.getLogger(GruposDAO.class.getName()).log(Level.SEVERE, null, ex);
          }
+        }
+        
+        public void cambiarGrupo(String idGrupo, Grupo grupo){
+            String qModificar = "UPDATE tc_grupos SET"
+                + " grado=" + grupo.getGrado() 
+                + ", grupo='" + grupo.getGrupo().toUpperCase()
+                + "', turno='" + grupo.getTurno()
+                + "', corte=" + grupo.getCorte()
+                + " WHERE id_grupo = " + idGrupo;
+            System.out.println(qModificar);
+          try {
+            
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            stmt.execute(qModificar);   
+          } catch (SQLException ex) {
+            Logger.getLogger(GruposDAO.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        }
+        
+        public List consultaCortes(){
+            List cortes = new ArrayList();
+            String query = "SELECT corte FROM cortes";
+            try {
+            
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = stmt.executeQuery(query);   
+             while(rs.next()) {
+               cortes.add(rs.getInt("corte"));
+             }
+             
+          } catch (SQLException ex) {
+            Logger.getLogger(GruposDAO.class.getName()).log(Level.SEVERE, null, ex);
+          }
+            return cortes;
         }
     
 }
