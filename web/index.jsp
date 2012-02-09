@@ -22,6 +22,7 @@
        //o=1;
         switch(o){
             case 1:ruta="grupos";break;
+            case 3:ruta="mostrarAlumnos";break; 
             default:ruta="Catalogos/Cortes/cortes.jsp";break;
         }
     %> 
