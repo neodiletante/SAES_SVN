@@ -32,15 +32,11 @@ public class BorrarGrupoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("En el servlet borrado");
-            String idGrupo = request.getParameter("idGrupo");
-            HttpSession session = request.getSession();
-        
+        String idGrupo = request.getParameter("idGrupo");
+        HttpSession session = request.getSession();
         Connection conect = (Connection) session.getAttribute("conn");
         GruposDAO gDAO = new GruposDAO(conect);
-        
-           
-               gDAO.borrarGrupo(idGrupo);
-           
+        gDAO.borrarGrupo(idGrupo);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

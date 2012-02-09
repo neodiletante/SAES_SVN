@@ -31,18 +31,16 @@ public class CambiarGrupoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String grado = request.getParameter("grado");
-        String grupo = request.getParameter("grupo");
-        String turno = request.getParameter("turno");
-        String corte = request.getParameter("corte");
-        String idGrupo = request.getParameter("id_grupo");
-     //    Grupo grupoUpdate = new Grupo(idGrupo,grado,grupo,turno,corte);
-        Grupo grupoUpdate = new Grupo(grado,grupo,turno,corte);
-            HttpSession session = request.getSession();
-        
-        Connection conect = (Connection) session.getAttribute("conn");
-        GruposDAO gDAO = new GruposDAO(conect);
-        gDAO.cambiarGrupo(idGrupo, grupoUpdate);
+      String grado = request.getParameter("grado");
+      String grupo = request.getParameter("grupo");
+      String turno = request.getParameter("turno");
+      String corte = request.getParameter("corte");
+      String idGrupo = request.getParameter("id_grupo");
+      Grupo grupoUpdate = new Grupo(grado,grupo,turno,corte);
+      HttpSession session = request.getSession();
+      Connection conect = (Connection) session.getAttribute("conn");
+      GruposDAO gDAO = new GruposDAO(conect);
+      gDAO.cambiarGrupo(idGrupo, grupoUpdate);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
