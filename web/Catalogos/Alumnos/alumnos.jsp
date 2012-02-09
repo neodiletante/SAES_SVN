@@ -55,8 +55,8 @@
                <div>
                  <p><input type="text" id="noExpediente" size="10" maxlength="20"/>
                  <p><input type="text" id="nombre" size="30" maxlength="45"/>
-                 <p><input class="radio_sexo" id="sexoF" type="radio" name="sexo"  value="F"/><label>Femenino</label>
-                 <input class="radio_sexo" id="sexoM" type="radio" name="sexo" value="M"/><label>Masculino</label>
+                 <p><input class="radio_sexo" id="sexoM" type="radio" name="sexo"  value="M"/><label>Mujer    </label>
+                 <input class="radio_sexo" id="sexoH" type="radio" name="sexo" value="H"/><label>Hombre</label>
                </div>
             </fieldset>
        
