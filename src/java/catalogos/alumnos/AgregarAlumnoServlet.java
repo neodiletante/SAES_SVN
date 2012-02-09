@@ -6,6 +6,7 @@ package catalogos.alumnos;
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +41,23 @@ public class AgregarAlumnoServlet extends HttpServlet {
     HttpSession session = request.getSession();
     Connection conect = (Connection) session.getAttribute("conn");
     AlumnosDAO aDAO = new AlumnosDAO(conect);
-    aDAO.insertarAlumno(alumnoInsert);
+    int status = aDAO.insertarAlumno(alumnoInsert);
+    String mensaje = "";
+    if(status == 1){
+      mensaje = "Alumno agregado";
+    }else if(status == 0){
+      mensaje = "No se pudo agregar porque ya existe un alumno con ese No. de expediente";
+    }else{
+      mensaje = "No se pudo agregar porque ocurrió un error en la Base de Datos";
+    }
+    response.setContentType("charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    try {
+     
+      out.println(mensaje);
+    } finally {      
+      out.close();
+    }
   }
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

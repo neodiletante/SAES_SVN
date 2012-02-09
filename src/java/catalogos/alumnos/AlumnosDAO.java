@@ -72,6 +72,27 @@ public class AlumnosDAO {
       return alumno;
     }
     
+    public int buscaAlumno(int noExpediente){
+      //alumno = null;
+      int cuenta = -1;
+      PreparedStatement psBuscar = null;
+      String query = "SELECT COUNT(*) AS cuenta FROM tc_alumno where no_expediente = ?";
+    try {
+      psBuscar = con.prepareStatement(query);
+      psBuscar.setInt(1, noExpediente);
+      rs = psBuscar.executeQuery();
+       while(rs.next()) {
+         cuenta = rs.getInt("cuenta");
+                
+       }
+    } catch (SQLException ex) {
+      Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }finally{
+      return cuenta;
+    }
+
+    }
+    
     public void borrarAlumno(int noExpediente){
         PreparedStatement psBorrar = null;
          String qBorrar = "DELETE FROM tc_alumno WHERE no_expediente = ?";
@@ -84,41 +105,51 @@ public class AlumnosDAO {
         }
     }
     
-    public void  insertarAlumno(Alumno alumno){
-        System.out.println("En el método de insertar Alumno");
-        PreparedStatement psInsertar = null;
-        String qInsertar = "INSERT INTO tc_alumno VALUES(?,?,?)";        
-        try {
-            psInsertar = con.prepareStatement(qInsertar);
-            if(psInsertar != null){
-              System.out.println("Hasta aquí");
-              psInsertar.setInt(1, alumno.getNoExpediente());
-              psInsertar.setString(2, alumno.getNombre());
-              psInsertar.setString(3, alumno.getSexo());
-              psInsertar.executeUpdate();
-            }else{
-              System.out.println("Es nulo el ps");
-            }
-           
-        } catch (SQLException ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
+    public int insertarAlumno(Alumno alumno){
+      int status = -1;  
+      int cuenta = buscaAlumno(alumno.getNoExpediente());
+      if (cuenta>0){
+        return 0;
+      }
+      System.out.println("En el método de insertar Alumno");
+      PreparedStatement psInsertar = null;
+      String qInsertar = "INSERT INTO tc_alumno VALUES(?,?,?)";        
+      try {
+        psInsertar = con.prepareStatement(qInsertar);
+        psInsertar.setInt(1, alumno.getNoExpediente());
+        psInsertar.setString(2, alumno.getNombre());
+        psInsertar.setString(3, alumno.getSexo());
+        psInsertar.executeUpdate();
+        status=1;
+
+      } catch (SQLException ex) {
+          Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+      }finally{
+        return status;
+      }
     }
     
-    public void modificarAlumno(int noExpedienteAnt, Alumno alumno){
-         PreparedStatement psModificar = null;
-            String qModificar = 
-              "UPDATE tc_alumno SET no_expediente = ?, Nombre = ?, sexo = ? WHERE no_expediente = ?";
-        try {
-            psModificar = con.prepareStatement(qModificar);
-            psModificar.setInt(1, alumno.getNoExpediente());
-            psModificar.setString(2, alumno.getNombre());
-            psModificar.setString(3, alumno.getSexo());
-            psModificar.setInt(4, noExpedienteAnt);
-            psModificar.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public int modificarAlumno(int noExpedienteAnt, Alumno alumno){
+      int cuenta = buscaAlumno(alumno.getNoExpediente());
+      if(cuenta > 0 && noExpedienteAnt != alumno.getNoExpediente()){
+        return 0;
+      }
+      int status = -1;
+      PreparedStatement psModificar = null;
+      String qModificar = 
+        "UPDATE tc_alumno SET no_expediente = ?, Nombre = ?, sexo = ? WHERE no_expediente = ?";
+      try {
+        psModificar = con.prepareStatement(qModificar);
+        psModificar.setInt(1, alumno.getNoExpediente());
+        psModificar.setString(2, alumno.getNombre());
+        psModificar.setString(3, alumno.getSexo());
+        psModificar.setInt(4, noExpedienteAnt);
+        psModificar.executeUpdate();
+        status=1;
+      } catch (SQLException ex) {
+        Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+      }finally{
+        return status;
+      }
     }
 }

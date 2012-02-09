@@ -2,9 +2,9 @@ var accion = '';
 //var id_grupo = null;
 var no_expediente_ant;
 
-function validaNombre(grupo){
-  var patron = /[A-Za-zñÑÁÉÍÓÚáéíóúäëïöü\s]/;
-  return !patron.test(grupo);
+function validaNombre(nombre){
+  var patron = /[A-Za-z\s]/;
+  return !patron.test(nombre);
 }
          
 $(function(){
@@ -21,15 +21,17 @@ $(function(){
         var mensaje = '';
         if (noExpediente == ''){
           mensaje = mensaje + 'Debe introducir un número de expediente\n';
-        }
-        if ( isNaN(noExpediente)){
-          mensaje = mensaje + 'El número de expediente no es válido\n';
+        }else{
+          if ( isNaN(noExpediente)){
+            mensaje = mensaje + 'El número de expediente no es válido\n';
+          }
         }
         if (nombre == ''){
           mensaje = mensaje + 'Debe introducir un nombre\n';
-        }
-        if(validaNombre(nombre)){
-          mensaje = mensaje + 'El nombre no es válido\n'
+        }else{
+          if(validaNombre(nombre)){
+            mensaje = mensaje + 'El nombre no es válido\n'
+          }
         }
         if (sexo == undefined){
           mensaje = mensaje + 'Debe introducir un sexo\n';
@@ -48,12 +50,14 @@ $(function(){
             $.post('modificarAlumno', parameters, 
               function(data){
                 $('#_principal').load('mostrarAlumnos');
+                alert(data);
               },'text');
           }else{
             $.post('agregarAlumno', parameters, 
-            function(data){
-              $('#_principal').load('mostrarAlumnos');
-            },'text');
+              function(data){
+                $('#_principal').load('mostrarAlumnos');
+                alert(data);
+              },'text');
           }
           $( this ).dialog( 'close' );
         } 
@@ -99,7 +103,7 @@ $(function(){
     var sexo = $('.radio_alumno:checked').parent().siblings("#input_sexo").text();
     $('#noExpediente').val(noExpediente);
     $('#nombre').val(nombre);
-    if (sexo == 'M'){
+    if (sexo == 'Mujer'){
       $('#sexoM').attr('checked', true);
     }else{
       $('#sexoH').attr('checked', true);
