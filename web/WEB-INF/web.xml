@@ -29,6 +29,26 @@
         <servlet-name>BorrarGrupo</servlet-name>
         <servlet-class>catalogos.grupos.BorrarGrupoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CambiarGrupo</servlet-name>
+        <servlet-class>catalogos.grupos.CambiarGrupoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarAlumno</servlet-name>
+        <servlet-class>catalogos.alumnos.AgregarAlumnoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorrarAlumno</servlet-name>
+        <servlet-class>catalogos.alumnos.BorrarAlumnoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarAlumno</servlet-name>
+        <servlet-class>catalogos.alumnos.ModificarAlumnoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MostrarAlumnos</servlet-name>
+        <servlet-class>catalogos.alumnos.MostrarAlumnosServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -44,6 +64,26 @@
     <servlet-mapping>
         <servlet-name>BorrarGrupo</servlet-name>
         <url-pattern>/borrarGrupo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CambiarGrupo</servlet-name>
+        <url-pattern>/cambiarGrupo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarAlumno</servlet-name>
+        <url-pattern>/agregarAlumno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarAlumno</servlet-name>
+        <url-pattern>/borrarAlumno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarAlumno</servlet-name>
+        <url-pattern>/modificarAlumno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MostrarAlumnos</servlet-name>
+        <url-pattern>/mostrarAlumnos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
