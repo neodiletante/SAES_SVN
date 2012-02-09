@@ -69,8 +69,8 @@ $(function(){
     $('#forma-agrega-alumno').dialog('open');
     $('#noExpediente').val("");
     $('#nombre').val("");
-    $('#sexoF').attr('checked', false);
     $('#sexoM').attr('checked', false);
+    $('#sexoH').attr('checked', false);
   });
   
   $('#btn-borra-alumno').click(function(){
@@ -90,7 +90,7 @@ $(function(){
     $('#forma-agrega-alumno').dialog({               
       title: 'Modificar alumno'
     });
-    var check = $('.radio_alumno:checked');
+    //var check = $('.radio_alumno:checked');
     //id_grupo = check[0].value;
     $('#forma-agrega-alumno').dialog('open');
     var noExpediente = $('.radio_alumno:checked').parent().siblings("#input_noExpediente").text();
@@ -99,10 +99,10 @@ $(function(){
     var sexo = $('.radio_alumno:checked').parent().siblings("#input_sexo").text();
     $('#noExpediente').val(noExpediente);
     $('#nombre').val(nombre);
-    if (sexo == 'F'){
-      $('#sexoF').attr('checked', true);
-    }else{
+    if (sexo == 'M'){
       $('#sexoM').attr('checked', true);
+    }else{
+      $('#sexoH').attr('checked', true);
     }
     
   });
