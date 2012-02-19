@@ -5,16 +5,7 @@
     Author     : maria
 --%>
 
-<!--% 
-   Connection conect = (Connection)session.getAttribute("conn");
-   java.sql.Statement stm = conect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-   ResultSet rst=null;
-   
-    %-->
-
  <script type="text/javascript" src="Catalogos/Grupos/grupos.js" />
-        
-             
       
 <center>
    <table id="tabla-grupos-actuales">
@@ -30,8 +21,6 @@
                 <th>Borrar</th>
                 <th>Modificar</th>
             </tr>
-            <%--= session.getAttribute("grupo") --%>
-            <%--=  pageContext.getAttribute("grupo",PageContext.SESSION_SCOPE) --%>
             <jsp:useBean id="grupos" class="java.util.ArrayList" scope="request" />
             <c:forEach var="grupo" items="${grupos}">
                <tr>
@@ -47,9 +36,7 @@
                 </td>
                </tr> 
             </c:forEach>
-    
         </tbody>
-        
     </table>
     
     <button class="ui-button" id="btn-agrega-grupo">Nuevo grupo</button> 
@@ -66,7 +53,6 @@
                   <p class="etiqueta"><label>Corte: </label>
                 </div>
                 <div>
-                 <!--p><input type="text" id="grado"  itemid="grado" size="10" /-->
                  <p><input type="text" id="grado" size="10" maxlength="1"/>
                  <p><input type="text" id="grupo" size="10" maxlength="1"/>
                  <p><input class="radio_turno" id="turnoM" type="radio" name="turno"  value="M"/><label>Matutino</label>
