@@ -49,6 +49,46 @@
         <servlet-name>MostrarAlumnos</servlet-name>
         <servlet-class>catalogos.alumnos.MostrarAlumnosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AgregaDatoInteres</servlet-name>
+        <servlet-class>catalogos.datos_interes.AgregaDatoInteresServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MuestraDatosInteres</servlet-name>
+        <servlet-class>catalogos.datos_interes.MuestraDatosInteresServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregaTipoDato</servlet-name>
+        <servlet-class>catalogos.datos_interes.AgregaTipoDatoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorraTipoDato</servlet-name>
+        <servlet-class>catalogos.datos_interes.BorraTipoDatoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorraDatoInteres</servlet-name>
+        <servlet-class>catalogos.datos_interes.BorraDatoInteresServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificaDatoInteres</servlet-name>
+        <servlet-class>catalogos.datos_interes.ModificaDatoInteresServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscaDatoInteres</servlet-name>
+        <servlet-class>catalogos.datos_interes.BuscaDatoInteresServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistroRedesSociales</servlet-name>
+        <servlet-class>catalogos.redes_sociales.RegistroRedesSocialesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificaRedesSociales</servlet-name>
+        <servlet-class>catalogos.redes_sociales.ModificaRedesSocialesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscaGrupos</servlet-name>
+        <servlet-class>catalogos.redes_sociales.BuscaGruposServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -84,6 +124,46 @@
     <servlet-mapping>
         <servlet-name>MostrarAlumnos</servlet-name>
         <url-pattern>/mostrarAlumnos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregaDatoInteres</servlet-name>
+        <url-pattern>/agregaDatoInteres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MuestraDatosInteres</servlet-name>
+        <url-pattern>/muestraDatosInteres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregaTipoDato</servlet-name>
+        <url-pattern>/agregaTipoDato</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorraTipoDato</servlet-name>
+        <url-pattern>/borraTipoDato</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorraDatoInteres</servlet-name>
+        <url-pattern>/borraDatoInteres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificaDatoInteres</servlet-name>
+        <url-pattern>/modificaDatoInteres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscaDatoInteres</servlet-name>
+        <url-pattern>/buscaDatoInteres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroRedesSociales</servlet-name>
+        <url-pattern>/registroRedesSociales</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificaRedesSociales</servlet-name>
+        <url-pattern>/modificaRedesSociales</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscaGrupos</servlet-name>
+        <url-pattern>/buscaGrupos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
