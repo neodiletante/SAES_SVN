@@ -20,6 +20,28 @@ public class DatosInteresDAO {
     this.con = con;
   }
   
+  public List<TipoDato> buscaTiposDeDatos(){
+    
+    TipoDato tipoDato = null;
+    List<TipoDato> tiposDato = new ArrayList<TipoDato>();
+     String query = "SELECT * FROM tc_tipo_dato_interes";
+   
+    try {
+      stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+      rs = stmt.executeQuery(query);
+      while(rs.next()) {
+        tipoDato = new TipoDato();
+        tipoDato.setTipo(rs.getInt("tipo"));
+        tipoDato.setDescripcion(rs.getString("descripcion"));
+        tiposDato.add(tipoDato);
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(DatosInteresDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }finally{
+      return tiposDato;
+    }
+  }
+  
   public List<TipoDato> buscaTiposDeDatos(boolean noUsado){
     
     TipoDato tipoDato = null;
@@ -27,6 +49,8 @@ public class DatosInteresDAO {
      String query = "SELECT * FROM tc_tipo_dato_interes";
     if (noUsado){
       query+= " WHERE tipo NOT IN (SELECT tipo FROM tc_datos_interes)";
+    }else{
+      query+= " WHERE tipo IN (SELECT tipo FROM tc_datos_interes)";
     }
     try {
       stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
