@@ -5,14 +5,16 @@
     // Get DataSource
     Context context =new InitialContext();
     Context envCtx = (Context) context.lookup("java:comp/env");
-      ds =  (DataSource)envCtx.lookup("jdbc/saes");
+    ds =  (DataSource)envCtx.lookup("jdbc/saes");
       if (ds != null) {
-       Connection conection=null;   
-       try{
-          conection=ds.getConnection();
-          session.setAttribute("conn", conection);
-       }catch(Exception ex) {
-          System.out.println(ex.getMessage());
-       }
-             }
+       if( session.getAttribute("conn")==null||((Connection)session.getAttribute("conn")).isClosed() ){
+        Connection conection=null;   
+        try{
+            conection=ds.getConnection();
+            session.setAttribute("conn", conection);
+        }catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+         }
+      }
 %>
