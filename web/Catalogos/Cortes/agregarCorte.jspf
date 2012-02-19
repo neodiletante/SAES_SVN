@@ -5,8 +5,8 @@
          StringBuffer query = new StringBuffer("insert into cortes values(");
          query.append(corte).append(",");
          query.append("STR_TO_DATE('").append(fecha_ini);
-         query.append("', '%m/%d/%Y')").append(",").append("STR_TO_DATE('");
-         query.append(fecha_fin+"', '%m/%d/%Y')").append(",'");
+         query.append("', '%d/%m/%Y')").append(",").append("STR_TO_DATE('");
+         query.append(fecha_fin+"', '%d/%m/%Y')").append(",'");
          query.append(descripcion).append("')");
          String respuesta=null;
          try{

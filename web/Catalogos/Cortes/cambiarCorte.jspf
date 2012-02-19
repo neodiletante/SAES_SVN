@@ -1,0 +1,32 @@
+  <%     corte=request.getParameter("corte");
+         String fechaIni = request.getParameter("fecha_ini");
+         String fechaFin = request.getParameter("fecha_fin");
+         String desc= request.getParameter("descripcion");
+         String resp="OK";
+         //buscar que el periodo este libre
+         StringBuffer qry=new StringBuffer(" select count(*)as total from cortes ");
+         qry.append("where STR_TO_DATE('"+fechaIni+"', '%m/%d/%Y') between fecha_ini and fecha_fin ");
+         qry.append("or STR_TO_DATE('"+fechaFin+"', '%m/%d/%Y') between fecha_ini and fecha_fin ");
+         qry.append("or fecha_ini between STR_TO_DATE('"+fechaIni+"', '%m/%d/%Y') and STR_TO_DATE('"+fechaFin+"', '%m/%d/%Y')" );
+         qry.append("or fecha_fin between STR_TO_DATE('"+fechaIni+"', '%m/%d/%Y') and STR_TO_DATE('"+fechaFin+"', '%m/%d/%Y')" );
+         try{
+             System.out.println(qry.toString());
+             rst=stm.executeQuery(qry.toString());
+             if(rst.first()&&rst.getInt("total")>0){
+                 resp="Error: Las fechas se empalman con otro periodo";
+             }
+             else{
+             //modificar
+                StringBuffer queryM=new StringBuffer("update cortes set fecha_ini=STR_TO_DATE('"+fechaIni+"', '%m/%d/%Y')");
+                queryM.append(", fecha_fin=STR_TO_DATE('").append(fechaFin).append("', '%m/%d/%Y'), descripcion='");
+                queryM.append(desc+"' where corte=").append(corte);
+                System.out.println(queryM.toString());
+                    if(stm.executeUpdate(queryM.toString())>0)
+                        resp="Corte modificado";
+                    else
+                        resp="No actualizado";
+             }
+            }catch(Exception ex){
+                resp="Error actualizando\n"+ex.getMessage();
+            }
+            out.println(resp);         %>
