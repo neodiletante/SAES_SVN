@@ -22,7 +22,10 @@
        //o=1;
         switch(o){
             case 1:ruta="grupos";break;
-            case 3:ruta="mostrarAlumnos";break; 
+            case 3:ruta="muestraGrupos";break; 
+            case 4:ruta="muestraDatosInteres";break;
+            case 5:ruta="registroRedesSociales";break;
+            case 6:ruta="modificaRedesSociales";break;
             default:ruta="Catalogos/Cortes/cortes.jsp";break;
         }
     %> 
