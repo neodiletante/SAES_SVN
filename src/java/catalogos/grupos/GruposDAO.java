@@ -34,7 +34,7 @@ public class GruposDAO {
            
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             String query = "SELECT * FROM tc_grupos ORDER BY corte DESC";
-            System.out.println(query);
+           // System.out.println(query);
             rs = stmt.executeQuery(query);
             
             while(rs.next()) {
