@@ -4,12 +4,14 @@
  */
 package catalogos.alumnos;
 
-
+import catalogos.grupos.Grupo;
+import catalogos.grupos.GruposDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ulises
  */
-@WebServlet(name = "AgregarAlumno", urlPatterns = {"/agregarAlumno"})
-public class AgregarAlumnoServlet extends HttpServlet {
+public class MuestraGruposServlet extends HttpServlet {
 
   /**
    * Processes requests for both HTTP
@@ -33,31 +34,19 @@ public class AgregarAlumnoServlet extends HttpServlet {
    * @throws IOException if an I/O error occurs
    */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-          throws ServletException, IOException{
-    String noExpediente = request.getParameter("noExpediente");
-    String nombre = request.getParameter("nombre");
-    String sexo = request.getParameter("sexo");
-    Alumno alumnoInsert = new Alumno(noExpediente,nombre, sexo);
-    HttpSession session = request.getSession();
-    Connection conect = (Connection) session.getAttribute("conn");
-    AlumnosDAO aDAO = new AlumnosDAO(conect);
-    int status = aDAO.insertarAlumno(alumnoInsert);
-    String mensaje = "";
-    if(status == 1){
-      mensaje = "Alumno agregado";
-    }else if(status == 0){
-      mensaje = "No se pudo agregar porque ya existe un alumno con ese No. de expediente";
-    }else{
-      mensaje = "No se pudo agregar porque ocurrió un error en la Base de Datos";
-    }
-    response.setContentType("charset=UTF-8");
-    PrintWriter out = response.getWriter();
-    try {
+          throws ServletException, IOException {
+     System.out.println("+++++++En el servlet grupos de alumnos+++++++++");
      
-      out.println(mensaje);
-    } finally {      
-      out.close();
-    }
+      HttpSession session = request.getSession();
+      Connection conect = (Connection) session.getAttribute("conn");
+  
+       GruposDAO gDAO = new GruposDAO(conect);
+       List<Grupo> grupos = gDAO.consultaGrupos();
+        
+       request.setAttribute("grupos", grupos);
+           //request.setAttribute("grupo", grupo);
+       RequestDispatcher view = request.getRequestDispatcher("Catalogos/Alumnos/alumnos.jsp");
+       view.forward(request, response);
   }
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
