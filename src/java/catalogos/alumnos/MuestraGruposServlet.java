@@ -41,9 +41,9 @@ public class MuestraGruposServlet extends HttpServlet {
       Connection conect = (Connection) session.getAttribute("conn");
   
        GruposDAO gDAO = new GruposDAO(conect);
-       List<Grupo> grupos = gDAO.consultaGrupos();
+       //List<Grupo> grupos = gDAO.consultaGrupos();
         
-       request.setAttribute("grupos", grupos);
+       //request.setAttribute("grupos", grupos);
            //request.setAttribute("grupo", grupo);
        RequestDispatcher view = request.getRequestDispatcher("Catalogos/Alumnos/alumnos.jsp");
        view.forward(request, response);
