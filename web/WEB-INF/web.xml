@@ -89,6 +89,14 @@
         <servlet-name>BuscaGrupos</servlet-name>
         <servlet-class>catalogos.redes_sociales.BuscaGruposServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscaCortes</servlet-name>
+        <servlet-class>catalogos.cortes.BuscaCortesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscaNosLista</servlet-name>
+        <servlet-class>catalogos.listas.BuscaNosListaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -164,6 +172,14 @@
     <servlet-mapping>
         <servlet-name>BuscaGrupos</servlet-name>
         <url-pattern>/buscaGrupos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscaCortes</servlet-name>
+        <url-pattern>/buscaCortes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscaNosLista</servlet-name>
+        <url-pattern>/buscaNosLista</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
