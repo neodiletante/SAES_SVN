@@ -48,10 +48,10 @@ public class ModificaRedesSocialesServlet extends HttpServlet {
       for(Object corte : cortes){
         System.out.println(corte);
       }
-      List<Grupo> grupos = gDAO.consultaGrupos();
+   //   List<Grupo> grupos = gDAO.consultaGrupos();
        List lista = new ListasDAO(conect).getDatos(2);
          request.setAttribute("cortes", cortes);
-      request.setAttribute("grupos", grupos);
+     // request.setAttribute("grupos", grupos);
       request.setAttribute("listas", lista);
         RequestDispatcher vista = request.getRequestDispatcher("Catalogos/Redes_sociales/redes_sociales_mod.jsp");
         vista.forward(request, response);

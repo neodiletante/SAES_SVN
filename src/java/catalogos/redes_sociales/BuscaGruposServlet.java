@@ -39,15 +39,27 @@ public class BuscaGruposServlet extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     HttpSession session = request.getSession();
+    String corte = (String) request.getParameter("corte");
+System.out.println("corte " + corte);   
+    //HttpSession session = request.getSession();
     Connection conn = (Connection) session.getAttribute("conn");
     GruposDAO gDAO = new GruposDAO(conn);
-    List<Grupo> grupos = gDAO.consultaGrupos();
-     List cortes = gDAO.consultaCortes();
+    
+    List<Grupo> grupos = gDAO.consultaGrupos(Integer.parseInt(corte));
+    System.out.println("No. elkementeos " + grupos.size());
+        for(int i=0 ; i< grupos.size() ; i++){
+          Grupo grupo = grupos.get(i);
+            System.out.println(grupo.getGrado() + " " + grupo.getGrupo()) ;
+      }
+    
+    
+    //List cortes = gDAO.consultaCortes();
+     
     //String dato = "{\"id\":\"" + datoInteres.getIdDato() + "\","
     //        + "\"descripcion\":\"" +datoInteres.getDescripcion() + "\","
     //        + "\"tipo\":\"" + datoInteres.getTipo() + "\"}";
     session.setAttribute("grupos", grupos);
-    session.setAttribute("cortes",cortes);
+  //  session.setAttribute("cortes",cortes);
     //request.setAttribute()
    // request.setAttribute("grupos", grupos);
    // RequestDispatcher view = request.getRequestDispatcher("Catalogos/Redes_sociales/redes_sociales_reg.jsp");
