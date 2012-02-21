@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author daniel
  */
-public class ListasDAO {
+public class ListasDAO{
     private String nombre;
     private int id_grupo;
     private int no_lista;
@@ -214,6 +214,29 @@ public class ListasDAO {
     }
     
     public boolean getTieneRegistros(){return this.tieneRegistros;}
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final ListasDAO other = (ListasDAO) obj;
+    if (this.no_lista != other.no_lista) {
+      return false;
+    }
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = this.no_lista;
+    return hash;
+  }
+    
+    
     
     }
 
