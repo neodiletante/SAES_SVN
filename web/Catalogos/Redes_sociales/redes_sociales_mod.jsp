@@ -4,26 +4,26 @@
     Author     : ulises
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<script type="text/javascript" src="Catalogos/Redes_sociales/redes_sociales_mod.js" />
    <center>
-    <jsp:useBean id="cortes" class="java.util.ArrayList" scope="request" />
-    <select id="select-cortes-mod">
+    <jsp:useBean id="cortes" class="java.util.ArrayList" scope="session" />
+    <select id="select-cortes-mod" class="combo-cortes">
       <option value="" selected="true">Seleccione un corte</option>
       <c:forEach var="corte" items="${cortes}">
         <option value="${corte}"> ${corte} </option>  
       </c:forEach>
       
     </select>
-      <jsp:useBean id="grupos" class="java.util.ArrayList" scope="request" />
-    <select id="grupos">
+      <jsp:useBean id="grupos" class="java.util.ArrayList" scope="session" />
+    <select id="select-grupos-mod">
       <option value="" selected="true">Seleccione un grupo</option>
       <c:forEach var="grupo" items="${grupos}">
         <option value="${grupo.idGrupo}"> ${grupo.grado} ${grupo.grupo} ${grupo.turno} </option>  
       </c:forEach>
       
     </select>
-      <jsp:useBean id="nos_lista" class="java.util.ArrayList" scope="request" />
-    <select id="no-lista">
+      <jsp:useBean id="nos_lista" class="java.util.ArrayList" scope="session" />
+    <select id="no-lista-mod">
       <option value="" selected="true">Seleccione un número de lista</option>
       <c:forEach var="no_lista" items="${nos_lista}">
         <option value="${no_lista}"> ${no_lista} </option>  
