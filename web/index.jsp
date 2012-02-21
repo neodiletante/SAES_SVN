@@ -21,10 +21,10 @@
        int o= request.getParameter("o")==null?0:Integer.parseInt(request.getParameter("o"));
        //o=1;
         switch(o){
-            case 1:ruta="grupos";break;
-            case 3:ruta="muestraGrupos";break; 
+            case 1:ruta="buscaCortes?url=Catalogos/Grupos/grupos.jsp";break;
+            case 3:ruta="mostrarAlumnos";break; 
             case 4:ruta="muestraDatosInteres";break;
-            case 5:ruta="registroRedesSociales";break;
+            case 5:ruta="buscaCortes?url=Catalogos/Redes_sociales/redes_sociales_reg.jsp";break;
             case 6:ruta="modificaRedesSociales";break;
             default:ruta="Catalogos/Cortes/cortes.jsp";break;
         }
