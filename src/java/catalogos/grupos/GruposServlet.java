@@ -45,13 +45,14 @@ public class GruposServlet extends HttpServlet {
      
       HttpSession session = request.getSession();
       Connection conect = (Connection) session.getAttribute("conn");
-  
+  session.removeAttribute("grupos");
        GruposDAO gDAO = new GruposDAO(conect);
-       List<Grupo> grupos = gDAO.consultaGrupos();
+     //  List<Grupo> grupos = gDAO.consultaGrupos();
        List cortes = gDAO.consultaCortes();
    
-       request.setAttribute("grupos", grupos);
+     //   request.setAttribute("grupos", grupos);
        request.setAttribute("cortes", cortes);
+       
        //request.setAttribute("grupo", grupo);
        RequestDispatcher view = request.getRequestDispatcher("Catalogos/Grupos/grupos.jsp");
        view.forward(request, response);

@@ -4,10 +4,7 @@
  */
 package catalogos.grupos;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,14 +25,16 @@ public class GruposDAO {
         
     }
 
-        public List consultaGrupos() {
+        public List consultaGrupos(int corte) {
         List<Grupo> grupos = new ArrayList<Grupo>();
+        PreparedStatement psBusca = null;
+        String query = "SELECT * FROM tc_grupos WHERE corte = ? ORDER BY corte DESC";
         try{
-           
-            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            String query = "SELECT * FROM tc_grupos ORDER BY corte DESC";
+          psBusca = con.prepareStatement(query);
+            //stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+          psBusca.setInt(1, corte);  
            // System.out.println(query);
-            rs = stmt.executeQuery(query);
+            rs = psBusca.executeQuery();
             
             while(rs.next()) {
                 grupo = new Grupo();
