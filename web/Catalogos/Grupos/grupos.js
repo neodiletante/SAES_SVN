@@ -1,5 +1,6 @@
 var accion = '';
 var id_grupo = null;
+var corte_actual;
      
 function validaGrado(valor){
   valor = parseInt(valor)
@@ -16,6 +17,25 @@ function validaGrupo(grupo){
 }
          
 $(function(){
+
+  $('#corte').change(function(){
+    var parameters={};
+    var corte = $('#corte').val();
+    //alert("corte"+corte);
+    corte_actual = corte;
+    parameters.corte=corte;
+    $.post('buscaGrupos', parameters, function(data){
+      $('#_principal').load('Catalogos/Grupos/grupos.jsp',data,function(){
+        $('#corte').val(corte)
+      });
+      
+   //   $('#corte').val(corte);
+    }, 'text');
+    
+   // 
+    
+  });
+  
   $( '#forma-agrega-grupo' ).dialog({
     autoOpen: false,
     height: 300,
@@ -26,7 +46,7 @@ $(function(){
         var grado = $('#grado').val();
         var grupo = $('#grupo').val();
         var turno = $('.radio_turno:checked').val();
-        var corte = $('#corte').val();
+       // var corte = $('#corte').val();
         var mensaje = '';
         if (grado == ''){
           mensaje = mensaje + 'Debe introducir un grado\n';
@@ -43,9 +63,9 @@ $(function(){
         if (turno == undefined){
           mensaje = mensaje + 'Debe introducir un turno\n';
         }
-        if (corte == ''){
-          mensaje = mensaje + 'Debe introducir un corte\n';
-        }
+      //  if (corte == ''){
+      //    mensaje = mensaje + 'Debe introducir un corte\n';
+      //  }
         if (mensaje != ''){
           alert(mensaje);
         }else{
@@ -53,7 +73,7 @@ $(function(){
           parameters.grado=grado;
           parameters.grupo=grupo;
           parameters.turno=turno;
-          parameters.corte=corte;
+          parameters.corte=corte_actual;
           if(accion =='modificar'){
             parameters.id_grupo=id_grupo;
             $.post('cambiarGrupo', parameters, 
@@ -72,6 +92,7 @@ $(function(){
     }//button,
   });
   $('#btn-agrega-grupo').click(function(){
+    if ($('#corte').val() != ''){
     accion = "agregar";
     $('#forma-agrega-grupo').dialog({               
       title: "Agregar grupo"
@@ -81,10 +102,15 @@ $(function(){
     $('#grupo').val("");
     $('#turnoM').attr('checked', false);
     $('#turnoV').attr('checked', false);
-    $('#corte').val("");
+    //$('#corte').val("");
+  }else{
+    alert("Debe seleccionar un corte");
+    
+  }
   });
   
   $('#btn-borra-grupo').click(function(){
+    //$('#corte').val(5);
     var checks = $('.check_grupo:checked');
     for(var i =0 ; i<checks.length ; i++){
       var parameters={};

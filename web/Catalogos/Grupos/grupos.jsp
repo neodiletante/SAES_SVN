@@ -6,8 +6,19 @@
 --%>
 
  <script type="text/javascript" src="Catalogos/Grupos/grupos.js" />
-      
+ 
+ 
 <center>
+  <p><h4>Seleccione un corte</h4> 
+ <p>
+   <jsp:useBean id="cortes" class="java.util.ArrayList" scope="session" />
+                 <p><select id ="corte" size="1">
+                      <option value="" selected="true"> Seleccione un corte </option>
+                     <c:forEach var="corte" items="${cortes}">
+                       <option value="${corte}"> ${corte} </option>  
+                     </c:forEach>
+                 </select>
+    <%--c:set var="cortes" value="${cortes}" scope="session" /--%>
    <table id="tabla-grupos-actuales">
         <thead>
             <th colspan="6">Grupos actuales</th>
@@ -21,7 +32,7 @@
                 <th>Borrar</th>
                 <th>Modificar</th>
             </tr>
-            <jsp:useBean id="grupos" class="java.util.ArrayList" scope="request" />
+            <jsp:useBean id="grupos" class="java.util.ArrayList" scope="session" />
             <c:forEach var="grupo" items="${grupos}">
                <tr>
                 <td class="resultado" id="input_grado">${grupo.grado}</td>
@@ -50,20 +61,13 @@
                   <p class="etiqueta"><label>Grado: </label>
                   <p class="etiqueta"><label>Grupo: </label>
                   <p class="etiqueta"><label>Turno: </label>
-                  <p class="etiqueta"><label>Corte: </label>
-                </div>
+               </div>
                 <div>
                  <p><input type="text" id="grado" size="10" maxlength="1"/>
                  <p><input type="text" id="grupo" size="10" maxlength="1"/>
                  <p><input class="radio_turno" id="turnoM" type="radio" name="turno"  value="M"/><label>Matutino</label>
                  <input class="radio_turno" id="turnoV" type="radio" name="turno" value="V"/><label>Vespertino</label>
-                 <jsp:useBean id="cortes" class="java.util.ArrayList" scope="request" />
-                 <p><select id ="corte" size="1">
-                      <option value="" selected="true"> Seleccione un corte </option>
-                     <c:forEach var="corte" items="${cortes}">
-                       <option value="${corte}"> ${corte} </option>  
-                     </c:forEach>
-                 </select>
+                 
                 </div>
                
             </fieldset>
