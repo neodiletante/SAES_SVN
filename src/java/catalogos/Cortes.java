@@ -8,6 +8,7 @@ package catalogos;
  *
  * @author daniel
  */
+//agregado desde otro repositorio
 public class Cortes {
     
 }
